@@ -16,6 +16,7 @@
               label="用户名"
               required
               clearable
+              tabindex="1"
             />
 
             <v-text-field
@@ -28,6 +29,7 @@
               :type="show ? 'text' : 'password'"
               required
               clearable
+              tabindex="2"
               @click:append="show = !show"
               @keyup.enter="validate"
             />
@@ -77,7 +79,7 @@ export default {
           }
         ).catch(
           () => {
-
+            // TODO:
           }
         )
       }

@@ -24,6 +24,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       login(userInfo).then(response => {
         const { data } = response
+        console.log(data)
         if (data) {
           commit('SET_TOKEN', data)
           setToken(data)

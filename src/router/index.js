@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '@/views/Layout'
+import Layout from '@/layout/index'
 
 Vue.use(Router)
 
@@ -10,20 +10,7 @@ Vue.use(Router)
  * all roles can be accessed
  */
 export const constantRoutes = [
-  {
-    path: '/login',
-    component: () => import('@/views/Login'),
-    hidden: true
-  },
-  {
-    path: '/home',
-    component: () => import('@/views/Home')
-  },
-  {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
-  }
+
 ]
 // 404 page must be placed at the end !!!
 export const permissionRouter = [
@@ -32,7 +19,35 @@ export const permissionRouter = [
 const createRouter = () => new Router({
   // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+  routes: [
+    {
+      path: '/login',
+      component: () => import('@/views/Login'),
+      hidden: true
+    },
+    {
+      path: '/',
+      component: Layout,
+      redirect: '/home',
+      children: [
+        {
+          path: 'home',
+          component: () => import('@/views/Home'),
+          meta: { title: 'Home', icon: 'mdi-home' },
+        },
+        {
+          path: 'home2',
+          component: () => import('@/views/Home'),
+          meta: { title: 'Home2', icon: 'mdi-home' }
+        }
+      ]
+    },
+    {
+      path: '/404',
+      component: () => import('@/views/404'),
+      hidden: true
+    }
+  ]
 })
 
 const router = createRouter()
