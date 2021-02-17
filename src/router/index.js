@@ -16,6 +16,10 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: '/home',
+    component: () => import('@/views/Home')
+  },
+  {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
@@ -37,18 +41,6 @@ const router = createRouter()
 export function resetRouter() {
   const newRouter = createRouter()
   router.matcher = newRouter.matcher // reset router
-}
-
-/**
- * 各个用户的首页
- * @type {{high: string, manager: string, admin: string, naive: string, supervisor: string}}
- */
-export const roleMap = {
-  naive: '/warehouse',
-  high: '/purchase',
-  supervisor: '/jig-information',
-  manager: '/purchase',
-  admin: '/information'
 }
 
 export default router

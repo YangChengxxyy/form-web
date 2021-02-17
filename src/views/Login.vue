@@ -52,8 +52,6 @@
 
 </template>
 <script>
-import { login } from '@/api/user'
-
 export default {
   data: () => ({
     valid: true,
@@ -73,12 +71,15 @@ export default {
   methods: {
     validate() {
       if (this.$refs['form'].validate()) {
-        login({
-          username: this.username,
-          password: this.password
-        }).then((res) => {
-          console.log(res.data)
-        })
+        this.$store.dispatch('user/login', { username: this.username, password: this.password }).then(
+          () => {
+            this.$router.push('/home')
+          }
+        ).catch(
+          () => {
+
+          }
+        )
       }
     },
     reset() {

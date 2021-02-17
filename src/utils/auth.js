@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'jig_web'
+const TokenKey = 'form'
 
 export function getToken() {
   const token = Cookies.get(TokenKey)
