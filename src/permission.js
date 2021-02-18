@@ -13,20 +13,22 @@ router.beforeEach(async(to, from, next) => {
 })
 
 router.afterEach(async(to, from, next) => {
-  if (store.getters.router.length === 0) {
-    store.dispatch('router/addRouter', to)
-    return
-  }
-  let needAdd = true
-  store.getters.router.map(
-    (value, index) => {
-      if (to.fullPath === value.fullPath) {
-        needAdd = false
-      }
+  if (to.fullPath !== '/login' && to.fullPath !== '/404') {
+    if (store.getters.router.length === 0) {
+      store.dispatch('router/addRouter', to)
+      return
     }
-  )
-  if (needAdd) {
-    store.dispatch('router/addRouter', to)
+    let needAdd = true
+    store.getters.router.map(
+      (value, index) => {
+        if (to.fullPath === value.fullPath) {
+          needAdd = false
+        }
+      }
+    )
+    if (needAdd) {
+      store.dispatch('router/addRouter', to)
+    }
   }
 })
 

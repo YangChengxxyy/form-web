@@ -33,12 +33,12 @@ const createRouter = () => new Router({
         {
           path: 'home',
           component: () => import('@/views/Home'),
-          meta: { title: 'Home', icon: 'mdi-home' },
+          meta: { title: '主页', icon: 'mdi-home' }
         },
         {
-          path: 'home2',
-          component: () => import('@/views/Home'),
-          meta: { title: 'Home2', icon: 'mdi-home' }
+          path: 'collected',
+          component: () => import('@/views/Collected'),
+          meta: { title: '已收集表单', icon: 'mdi-form-dropdown' }
         }
       ]
     },

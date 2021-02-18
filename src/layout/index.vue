@@ -2,7 +2,7 @@
   <v-app>
     <v-navigation-drawer ref="nav" color="#2196F3" dark app>
       <!-- -->
-      <RouterNavigation class="my-8" />
+      <RouterNavigation class="mt-8" />
     </v-navigation-drawer>
 
     <v-app-bar app>
@@ -19,9 +19,10 @@
         </v-col>
       </v-row>
     </v-app-bar><!-- 根据应用组件来调整你的内容 -->
-    <v-main><!-- 给应用提供合适的间距 -->
+    <v-main class="pa-4"><!-- 给应用提供合适的间距 -->
       <v-container fluid>
-        <!-- 如果使用 vue-router --><router-view />
+        <!-- 如果使用 vue-router -->
+        <router-view />
       </v-container>
     </v-main>
 
